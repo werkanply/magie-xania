@@ -1,0 +1,52 @@
+{
+  "id_map": {
+    "ENTITY": 4,
+    "GUI": 2
+  },
+  "mod_elements": [
+    {
+      "name": "Marmite",
+      "type": "block",
+      "sortid": 1,
+      "compiles": false,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "marmite"
+    },
+    {
+      "name": "Potions",
+      "type": "gui",
+      "sortid": 2,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {
+        "0": 2
+      },
+      "registry_name": "potions"
+    }
+  ],
+  "variable_elements": [],
+  "sound_elements": [],
+  "language_map": {
+    "en_us": {
+      "tile.marmite.name": "Marmite"
+    }
+  },
+  "workspaceSettings": {
+    "modid": "vrai_xania",
+    "modName": "vrai xania",
+    "version": "1.0.0",
+    "author": "marek, MCreator",
+    "websiteURL": "https://mcreator.net",
+    "disableForgeVersionCheck": true,
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [],
+    "currentGenerator": "forge-1.12.2",
+    "modElementsPackage": "net.mcreator.vraixania",
+    "lockBaseModFiles": false
+  },
+  "mcreatorVersion": 202000432115
+}
