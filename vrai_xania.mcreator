@@ -1,14 +1,14 @@
 {
   "id_map": {
-    "ENTITY": 4,
-    "GUI": 2
+    "GUI": 2,
+    "ENTITY": 4
   },
   "mod_elements": [
     {
       "name": "Marmite",
       "type": "block",
       "sortid": 1,
-      "compiles": false,
+      "compiles": true,
       "locked_code": false,
       "ids": {},
       "registry_name": "marmite"
@@ -23,13 +23,99 @@
         "0": 2
       },
       "registry_name": "potions"
+    },
+    {
+      "name": "Mps0",
+      "type": "procedure",
+      "sortid": 3,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "mps_0",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Marmiteeau",
+      "type": "block",
+      "sortid": 4,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "marmiteeau"
+    },
+    {
+      "name": "Marmiteeaup",
+      "type": "procedure",
+      "sortid": 5,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "marmiteeaup",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Marmitecharbon",
+      "type": "block",
+      "sortid": 6,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "marmitecharbon"
     }
   ],
   "variable_elements": [],
   "sound_elements": [],
   "language_map": {
     "en_us": {
-      "tile.marmite.name": "Marmite"
+      "tile.marmite.name": "Marmite",
+      "tile.marmiteeau.name": "Marmiteeau",
+      "tile.marmitecharbon.name": "Marmitecharbon"
     }
   },
   "workspaceSettings": {

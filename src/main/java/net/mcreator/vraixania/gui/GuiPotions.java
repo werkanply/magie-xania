@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import net.minecraft.world.World;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.inventory.Slot;
@@ -23,6 +24,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.GuiButton;
 
+import net.mcreator.vraixania.procedure.ProcedureMps0;
 import net.mcreator.vraixania.VraiXaniaMod;
 import net.mcreator.vraixania.ElementsVraiXaniaMod;
 
@@ -57,23 +59,21 @@ public class GuiPotions extends ElementsVraiXaniaMod.ModElement {
 			this.x = x;
 			this.y = y;
 			this.z = z;
-			this.internal = new InventoryBasic("", true, 3);
+			this.internal = new InventoryBasic("", true, 2);
 			TileEntity ent = world.getTileEntity(new BlockPos(x, y, z));
 			if (ent instanceof IInventory)
 				this.internal = (IInventory) ent;
-			this.customSlots.put(0, this.addSlotToContainer(new Slot(internal, 0, 284, -35) {
+			this.customSlots.put(0, this.addSlotToContainer(new Slot(internal, 0, 139, 60) {
 			}));
-			this.customSlots.put(1, this.addSlotToContainer(new Slot(internal, 1, 284, -16) {
-			}));
-			this.customSlots.put(2, this.addSlotToContainer(new Slot(internal, 2, 284, 0) {
+			this.customSlots.put(1, this.addSlotToContainer(new Slot(internal, 1, 96, 15) {
 			}));
 			int si;
 			int sj;
 			for (si = 0; si < 3; ++si)
 				for (sj = 0; sj < 9; ++sj)
-					this.addSlotToContainer(new Slot(player.inventory, sj + (si + 1) * 9, 0 + 8 + sj * 18, 0 + 84 + si * 18));
+					this.addSlotToContainer(new Slot(player.inventory, sj + (si + 1) * 9, 18 + 8 + sj * 18, 8 + 84 + si * 18));
 			for (si = 0; si < 9; ++si)
-				this.addSlotToContainer(new Slot(player.inventory, si, 0 + 8 + si * 18, 0 + 142));
+				this.addSlotToContainer(new Slot(player.inventory, si, 18 + 8 + si * 18, 8 + 142));
 		}
 
 		public Map<Integer, Slot> get() {
@@ -92,18 +92,18 @@ public class GuiPotions extends ElementsVraiXaniaMod.ModElement {
 			if (slot != null && slot.getHasStack()) {
 				ItemStack itemstack1 = slot.getStack();
 				itemstack = itemstack1.copy();
-				if (index < 3) {
-					if (!this.mergeItemStack(itemstack1, 3, this.inventorySlots.size(), true)) {
+				if (index < 2) {
+					if (!this.mergeItemStack(itemstack1, 2, this.inventorySlots.size(), true)) {
 						return ItemStack.EMPTY;
 					}
 					slot.onSlotChange(itemstack1, itemstack);
-				} else if (!this.mergeItemStack(itemstack1, 0, 3, false)) {
-					if (index < 3 + 27) {
-						if (!this.mergeItemStack(itemstack1, 3 + 27, this.inventorySlots.size(), true)) {
+				} else if (!this.mergeItemStack(itemstack1, 0, 2, false)) {
+					if (index < 2 + 27) {
+						if (!this.mergeItemStack(itemstack1, 2 + 27, this.inventorySlots.size(), true)) {
 							return ItemStack.EMPTY;
 						}
 					} else {
-						if (!this.mergeItemStack(itemstack1, 3, 3 + 27, false)) {
+						if (!this.mergeItemStack(itemstack1, 2, 2 + 27, false)) {
 							return ItemStack.EMPTY;
 						}
 					}
@@ -232,10 +232,10 @@ public class GuiPotions extends ElementsVraiXaniaMod.ModElement {
 			this.y = y;
 			this.z = z;
 			this.entity = entity;
-			this.xSize = 176;
-			this.ySize = 166;
+			this.xSize = 212;
+			this.ySize = 181;
 		}
-
+		private static final ResourceLocation texture = new ResourceLocation("vrai_xania:textures/potions.png");
 		@Override
 		public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 			this.drawDefaultBackground();
@@ -246,6 +246,10 @@ public class GuiPotions extends ElementsVraiXaniaMod.ModElement {
 		@Override
 		protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+			this.mc.renderEngine.bindTexture(texture);
+			int k = (this.width - this.xSize) / 2;
+			int l = (this.height - this.ySize) / 2;
+			this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
 			zLevel = 100.0F;
 		}
 
@@ -277,10 +281,11 @@ public class GuiPotions extends ElementsVraiXaniaMod.ModElement {
 		@Override
 		public void initGui() {
 			super.initGui();
-			this.guiLeft = (this.width - 176) / 2;
-			this.guiTop = (this.height - 166) / 2;
+			this.guiLeft = (this.width - 212) / 2;
+			this.guiTop = (this.height - 181) / 2;
 			Keyboard.enableRepeatEvents(true);
 			this.buttonList.clear();
+			this.buttonList.add(new GuiButton(0, this.guiLeft + 115, this.guiTop + 12, 70, 20, "ajouter"));
 		}
 
 		@Override
@@ -395,6 +400,17 @@ public class GuiPotions extends ElementsVraiXaniaMod.ModElement {
 		// security measure to prevent arbitrary chunk generation
 		if (!world.isBlockLoaded(new BlockPos(x, y, z)))
 			return;
+		if (buttonID == 0) {
+			{
+				Map<String, Object> $_dependencies = new HashMap<>();
+				$_dependencies.put("entity", entity);
+				$_dependencies.put("x", x);
+				$_dependencies.put("y", y);
+				$_dependencies.put("z", z);
+				$_dependencies.put("world", world);
+				ProcedureMps0.executeProcedure($_dependencies);
+			}
+		}
 	}
 
 	private static void handleSlotAction(EntityPlayer entity, int slotID, int changeType, int meta, int x, int y, int z) {

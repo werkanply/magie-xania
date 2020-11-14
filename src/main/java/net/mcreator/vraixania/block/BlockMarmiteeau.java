@@ -24,7 +24,6 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.Item;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.InventoryHelper;
-import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.Container;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.entity.player.EntityPlayer;
@@ -36,40 +35,38 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.Block;
 
-import net.mcreator.vraixania.procedure.ProcedureMarmiteeaup;
+import net.mcreator.vraixania.gui.GuiPotions;
+import net.mcreator.vraixania.VraiXaniaMod;
 import net.mcreator.vraixania.ElementsVraiXaniaMod;
 
-import java.util.Map;
-import java.util.HashMap;
-
 @ElementsVraiXaniaMod.ModElement.Tag
-public class BlockMarmite extends ElementsVraiXaniaMod.ModElement {
-	@GameRegistry.ObjectHolder("vrai_xania:marmite")
+public class BlockMarmiteeau extends ElementsVraiXaniaMod.ModElement {
+	@GameRegistry.ObjectHolder("vrai_xania:marmiteeau")
 	public static final Block block = null;
-	public BlockMarmite(ElementsVraiXaniaMod instance) {
-		super(instance, 1);
+	public BlockMarmiteeau(ElementsVraiXaniaMod instance) {
+		super(instance, 4);
 	}
 
 	@Override
 	public void initElements() {
-		elements.blocks.add(() -> new BlockCustom().setRegistryName("marmite"));
+		elements.blocks.add(() -> new BlockCustom().setRegistryName("marmiteeau"));
 		elements.items.add(() -> new ItemBlock(block).setRegistryName(block.getRegistryName()));
 	}
 
 	@Override
 	public void init(FMLInitializationEvent event) {
-		GameRegistry.registerTileEntity(TileEntityCustom.class, "vrai_xania:tileentitymarmite");
+		GameRegistry.registerTileEntity(TileEntityCustom.class, "vrai_xania:tileentitymarmiteeau");
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerModels(ModelRegistryEvent event) {
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation("vrai_xania:marmite", "inventory"));
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation("vrai_xania:marmiteeau", "inventory"));
 	}
 	public static class BlockCustom extends Block implements ITileEntityProvider {
 		public BlockCustom() {
 			super(Material.ROCK);
-			setUnlocalizedName("marmite");
+			setUnlocalizedName("marmiteeau");
 			setSoundType(SoundType.GROUND);
 			setHardness(1F);
 			setResistance(10F);
@@ -125,14 +122,8 @@ public class BlockMarmite extends ElementsVraiXaniaMod.ModElement {
 			int x = pos.getX();
 			int y = pos.getY();
 			int z = pos.getZ();
-			{
-				Map<String, Object> $_dependencies = new HashMap<>();
-				$_dependencies.put("entity", entity);
-				$_dependencies.put("x", x);
-				$_dependencies.put("y", y);
-				$_dependencies.put("z", z);
-				$_dependencies.put("world", world);
-				ProcedureMarmiteeaup.executeProcedure($_dependencies);
+			if (entity instanceof EntityPlayer) {
+				((EntityPlayer) entity).openGui(VraiXaniaMod.instance, GuiPotions.GUIID, world, x, y, z);
 			}
 			return true;
 		}
@@ -165,7 +156,7 @@ public class BlockMarmite extends ElementsVraiXaniaMod.ModElement {
 
 		@Override
 		public String getName() {
-			return "container.marmite";
+			return "container.marmiteeau";
 		}
 
 		@Override
@@ -211,13 +202,12 @@ public class BlockMarmite extends ElementsVraiXaniaMod.ModElement {
 
 		@Override
 		public String getGuiID() {
-			return "vrai_xania:marmite";
+			return "vrai_xania:marmiteeau";
 		}
 
 		@Override
 		public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
-			this.fillWithLoot(playerIn);
-			return new ContainerChest(playerInventory, this, playerIn);
+			return new GuiPotions.GuiContainerMod(this.getWorld(), this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), playerIn);
 		}
 
 		@Override

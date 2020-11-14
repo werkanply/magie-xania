@@ -3,7 +3,7 @@
   "_type": "block",
   "definition": {
     "texture": "marmite",
-    "textureTop": "marmite",
+    "textureTop": "marmiteeau",
     "textureLeft": "marmite",
     "textureFront": "marmite",
     "textureRight": "marmite",
@@ -22,7 +22,7 @@
     "Mx": 1.0,
     "My": 1.0,
     "Mz": 1.0,
-    "name": "Marmite",
+    "name": "Marmiteeau",
     "specialInfo": [],
     "hardness": 1.0,
     "resistance": 10.0,
@@ -72,8 +72,8 @@
     "particleSpawningRadious": 0.5,
     "particleAmount": 4,
     "hasInventory": true,
-    "guiBoundTo": "<NONE>",
-    "openGUIOnRightClick": false,
+    "guiBoundTo": "Potions",
+    "openGUIOnRightClick": true,
     "inventorySize": 9,
     "inventoryStackSize": 64,
     "inventoryDropWhenDestroyed": true,
@@ -88,9 +88,6 @@
     "isFluidTank": false,
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
-    "onRightClicked": {
-      "name": "Marmiteeaup"
-    },
     "spawnWorldTypes": [],
     "restrictionBiomes": [],
     "blocksToReplace": [

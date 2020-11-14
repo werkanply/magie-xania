@@ -3,7 +3,7 @@
   "_type": "block",
   "definition": {
     "texture": "marmite",
-    "textureTop": "marmite",
+    "textureTop": "marmitecharbon",
     "textureLeft": "marmite",
     "textureFront": "marmite",
     "textureRight": "marmite",
@@ -22,7 +22,7 @@
     "Mx": 1.0,
     "My": 1.0,
     "Mz": 1.0,
-    "name": "Marmite",
+    "name": "Marmitecharbon",
     "specialInfo": [],
     "hardness": 1.0,
     "resistance": 10.0,
@@ -64,22 +64,26 @@
     "luminance": 0.0,
     "unbreakable": false,
     "breakHarvestLevel": 1,
-    "spawnParticles": false,
+    "spawnParticles": true,
     "particleToSpawn": {
-      "value": "EXPLOSION_NORMAL"
+      "value": "SMOKE_LARGE"
     },
-    "particleSpawningShape": "Spread",
-    "particleSpawningRadious": 0.5,
+    "particleSpawningShape": "Top",
+    "particleSpawningRadious": 1.0,
     "particleAmount": 4,
     "hasInventory": true,
-    "guiBoundTo": "<NONE>",
-    "openGUIOnRightClick": false,
-    "inventorySize": 9,
+    "guiBoundTo": "Potions",
+    "openGUIOnRightClick": true,
+    "inventorySize": 3,
     "inventoryStackSize": 64,
     "inventoryDropWhenDestroyed": true,
     "inventoryComparatorPower": true,
     "inventoryOutSlotIDs": [],
-    "inventoryInSlotIDs": [],
+    "inventoryInSlotIDs": [
+      0,
+      1,
+      2
+    ],
     "hasEnergyStorage": false,
     "energyInitial": 0,
     "energyCapacity": 400000,
@@ -88,16 +92,9 @@
     "isFluidTank": false,
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
-    "onRightClicked": {
-      "name": "Marmiteeaup"
-    },
     "spawnWorldTypes": [],
     "restrictionBiomes": [],
-    "blocksToReplace": [
-      {
-        "value": "Blocks.STONE"
-      }
-    ],
+    "blocksToReplace": [],
     "frequencyPerChunks": 10,
     "frequencyOnChunk": 16,
     "minGenerateHeight": 0,
