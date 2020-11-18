@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "8": "marmiteforce2"
+      },
+      "name": "default"
+    }
+  }
+}

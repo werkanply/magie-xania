@@ -2,20 +2,20 @@
   "_fv": 10,
   "_type": "block",
   "definition": {
-    "texture": "marmite",
+    "texture": "chaudronetfeux",
     "textureTop": "marmite",
     "textureLeft": "marmite",
     "textureFront": "marmite",
     "textureRight": "marmite",
     "textureBack": "marmite",
-    "renderType": 10,
-    "customModelName": "Normal",
+    "renderType": 2,
+    "customModelName": "chaudronetfeux:default",
     "rotationMode": 0,
     "emissiveRendering": false,
     "itemTexture": "",
-    "hasTransparency": false,
+    "hasTransparency": true,
     "connectedSides": false,
-    "transparencyType": "SOLID",
+    "transparencyType": "CUTOUT_MIPPED",
     "mx": 0.0,
     "my": 0.0,
     "mz": 0.0,
@@ -32,16 +32,16 @@
     },
     "destroyTool": "Not specified",
     "customDrop": {
-      "value": ""
+      "value": "CUSTOM:Chaudron"
     },
     "dropAmount": 1,
     "isBeaconBase": false,
     "enchantPowerBonus": 0.0,
     "plantsGrowOn": false,
     "canProvidePower": false,
-    "lightOpacity": 255,
+    "lightOpacity": 0,
     "material": {
-      "value": "ROCK"
+      "value": "IRON"
     },
     "tickRate": 10,
     "tickRandomly": false,
@@ -59,14 +59,14 @@
     "reactionToPushing": "NORMAL",
     "isNotColidable": false,
     "soundOnStep": {
-      "value": "GROUND"
+      "value": "METAL"
     },
     "luminance": 0.0,
     "unbreakable": false,
     "breakHarvestLevel": 1,
     "spawnParticles": false,
     "particleToSpawn": {
-      "value": "EXPLOSION_NORMAL"
+      "value": "CAMPFIRE_COSY_SMOKE"
     },
     "particleSpawningShape": "Spread",
     "particleSpawningRadious": 0.5,
@@ -91,13 +91,12 @@
     "onRightClicked": {
       "name": "Marmiteeaup"
     },
+    "onDestroyedByPlayer": {
+      "name": "MarmiteBlockDestroyedByPlayer"
+    },
     "spawnWorldTypes": [],
     "restrictionBiomes": [],
-    "blocksToReplace": [
-      {
-        "value": "Blocks.STONE"
-      }
-    ],
+    "blocksToReplace": [],
     "frequencyPerChunks": 10,
     "frequencyOnChunk": 16,
     "minGenerateHeight": 0,

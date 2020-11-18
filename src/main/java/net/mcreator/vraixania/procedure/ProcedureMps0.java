@@ -17,7 +17,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.properties.IProperty;
 
-import net.mcreator.vraixania.block.BlockMarmitecharbon;
+import net.mcreator.vraixania.block.BlockMarmiterapidite;
 import net.mcreator.vraixania.ElementsVraiXaniaMod;
 
 import java.util.function.Supplier;
@@ -68,24 +68,23 @@ public class ProcedureMps0 extends ElementsVraiXaniaMod.ModElement {
 				}
 				return ItemStack.EMPTY;
 			}
-		}.getItemStack((int) (1))).getItem() == new ItemStack(Items.COAL, (int) (1), 0).getItem())) {
+		}.getItemStack((int) (1))).getItem() == new ItemStack(Items.SUGAR, (int) (1)).getItem())) {
 			if (entity instanceof EntityPlayerMP) {
 				Container _current = ((EntityPlayerMP) entity).openContainer;
 				if (_current instanceof Supplier) {
 					Object invobj = ((Supplier) _current).get();
 					if (invobj instanceof Map) {
-						((Slot) ((Map) invobj).get((int) (1))).decrStackSize((int) (1));
+						((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
 						_current.detectAndSendChanges();
 					}
 				}
 			}
-			world.playSound((EntityPlayer) null, x, y, z,
-					(net.minecraft.util.SoundEvent) net.minecraft.util.SoundEvent.REGISTRY.getObject(new ResourceLocation("block.fire.ambient")),
-					SoundCategory.NEUTRAL, (float) 3, (float) 3);
-			world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, x, y, z, 0, 1, 2);
+			world.playSound((EntityPlayer) null, x, y, z, (net.minecraft.util.SoundEvent) net.minecraft.util.SoundEvent.REGISTRY
+					.getObject(new ResourceLocation("block.enchantment_table.use")), SoundCategory.NEUTRAL, (float) 3, (float) 3);
+			world.spawnParticle(EnumParticleTypes.DRAGON_BREATH, x, y, z, 0, 1, 2);
 			{
 				BlockPos _bp = new BlockPos((int) x, (int) y, (int) z);
-				IBlockState _bs = BlockMarmitecharbon.block.getDefaultState();
+				IBlockState _bs = BlockMarmiterapidite.block.getDefaultState();
 				IBlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<IProperty<?>, Comparable<?>> entry : _bso.getProperties().entrySet()) {
 					IProperty _property = entry.getKey();
@@ -119,7 +118,7 @@ public class ProcedureMps0 extends ElementsVraiXaniaMod.ModElement {
 				if (_current instanceof Supplier) {
 					Object invobj = ((Supplier) _current).get();
 					if (invobj instanceof Map) {
-						((Slot) ((Map) invobj).get((int) (1))).decrStackSize((int) (1));
+						((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
 						_current.detectAndSendChanges();
 					}
 				}

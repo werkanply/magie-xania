@@ -1,12 +1,8 @@
 {
-  "parent": "block/cube",
+  "parent": "vrai_xania:custom/marmite",
   "textures": {
-    "down": "vrai_xania:blocks/marmite",
-    "up": "vrai_xania:blocks/marmiteeau",
-    "north": "vrai_xania:blocks/marmite",
-    "east": "vrai_xania:blocks/marmite",
-    "south": "vrai_xania:blocks/marmite",
-    "west": "vrai_xania:blocks/marmite",
-    "particle": "vrai_xania:blocks/marmite"
+    "all": "vrai_xania:blocks/marmiteeau1",
+    "particle": "vrai_xania:blocks/marmiteeau1",
+    "6": "vrai_xania:blocks/chaudron"
   }
 }

@@ -1,0 +1,8 @@
+{
+  "parent": "vrai_xania:custom/marmitefeux",
+  "textures": {
+    "all": "vrai_xania:blocks/marmitefeux",
+    "particle": "vrai_xania:blocks/marmitefeux",
+    "12": "vrai_xania:blocks/marmitefeux"
+  }
+}

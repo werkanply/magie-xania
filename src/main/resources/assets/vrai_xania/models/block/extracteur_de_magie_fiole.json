@@ -1,0 +1,8 @@
+{
+  "parent": "vrai_xania:custom/extracteurdemagiefiolefinal",
+  "textures": {
+    "all": "vrai_xania:blocks/extracteurdemagiefiolefinal",
+    "particle": "vrai_xania:blocks/extracteurdemagiefiolefinal",
+    "2": "vrai_xania:blocks/extracteurdemagiefiolefinal"
+  }
+}

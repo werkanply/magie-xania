@@ -9,11 +9,13 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 
 import net.minecraft.world.World;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.tileentity.TileEntityLockableLoot;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
@@ -24,6 +26,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.Item;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.Container;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,9 +38,12 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.Block;
 
-import net.mcreator.vraixania.gui.GuiPotions;
-import net.mcreator.vraixania.VraiXaniaMod;
+import net.mcreator.vraixania.procedure.ProcedureMarmiteeauOnBlockRightClicked;
+import net.mcreator.vraixania.procedure.ProcedureMarmiteeauBlockDestroyedByPlayer;
 import net.mcreator.vraixania.ElementsVraiXaniaMod;
+
+import java.util.Map;
+import java.util.HashMap;
 
 @ElementsVraiXaniaMod.ModElement.Tag
 public class BlockMarmiteeau extends ElementsVraiXaniaMod.ModElement {
@@ -65,14 +71,30 @@ public class BlockMarmiteeau extends ElementsVraiXaniaMod.ModElement {
 	}
 	public static class BlockCustom extends Block implements ITileEntityProvider {
 		public BlockCustom() {
-			super(Material.ROCK);
+			super(Material.IRON);
 			setUnlocalizedName("marmiteeau");
-			setSoundType(SoundType.GROUND);
+			setSoundType(SoundType.METAL);
 			setHardness(1F);
 			setResistance(10F);
 			setLightLevel(0F);
-			setLightOpacity(255);
+			setLightOpacity(0);
 			setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+		}
+
+		@SideOnly(Side.CLIENT)
+		@Override
+		public BlockRenderLayer getBlockLayer() {
+			return BlockRenderLayer.CUTOUT_MIPPED;
+		}
+
+		@Override
+		public boolean isOpaqueCube(IBlockState state) {
+			return false;
+		}
+
+		@Override
+		public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+			drops.add(new ItemStack(BlockChaudron.block, (int) (1)));
 		}
 
 		@Override
@@ -116,14 +138,34 @@ public class BlockMarmiteeau extends ElementsVraiXaniaMod.ModElement {
 		}
 
 		@Override
+		public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer entity, boolean willHarvest) {
+			boolean retval = super.removedByPlayer(state, world, pos, entity, willHarvest);
+			int x = pos.getX();
+			int y = pos.getY();
+			int z = pos.getZ();
+			{
+				Map<String, Object> $_dependencies = new HashMap<>();
+				$_dependencies.put("entity", entity);
+				ProcedureMarmiteeauBlockDestroyedByPlayer.executeProcedure($_dependencies);
+			}
+			return retval;
+		}
+
+		@Override
 		public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer entity, EnumHand hand, EnumFacing direction,
 				float hitX, float hitY, float hitZ) {
 			super.onBlockActivated(world, pos, state, entity, hand, direction, hitX, hitY, hitZ);
 			int x = pos.getX();
 			int y = pos.getY();
 			int z = pos.getZ();
-			if (entity instanceof EntityPlayer) {
-				((EntityPlayer) entity).openGui(VraiXaniaMod.instance, GuiPotions.GUIID, world, x, y, z);
+			{
+				Map<String, Object> $_dependencies = new HashMap<>();
+				$_dependencies.put("entity", entity);
+				$_dependencies.put("x", x);
+				$_dependencies.put("y", y);
+				$_dependencies.put("z", z);
+				$_dependencies.put("world", world);
+				ProcedureMarmiteeauOnBlockRightClicked.executeProcedure($_dependencies);
 			}
 			return true;
 		}
@@ -207,7 +249,8 @@ public class BlockMarmiteeau extends ElementsVraiXaniaMod.ModElement {
 
 		@Override
 		public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
-			return new GuiPotions.GuiContainerMod(this.getWorld(), this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), playerIn);
+			this.fillWithLoot(playerIn);
+			return new ContainerChest(playerInventory, this, playerIn);
 		}
 
 		@Override

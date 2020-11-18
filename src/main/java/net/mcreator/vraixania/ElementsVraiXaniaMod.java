@@ -34,7 +34,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.block.Block;
 
-import net.mcreator.vraixania.gui.GuiPotions;
+import net.mcreator.vraixania.gui.GuiPuiseurDeMagieGui;
 
 import java.util.function.Supplier;
 import java.util.Random;
@@ -124,15 +124,15 @@ public class ElementsVraiXaniaMod implements IFuelHandler, IWorldGenerator {
 	public static class GuiHandler implements IGuiHandler {
 		@Override
 		public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-			if (id == GuiPotions.GUIID)
-				return new GuiPotions.GuiContainerMod(world, x, y, z, player);
+			if (id == GuiPuiseurDeMagieGui.GUIID)
+				return new GuiPuiseurDeMagieGui.GuiContainerMod(world, x, y, z, player);
 			return null;
 		}
 
 		@Override
 		public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-			if (id == GuiPotions.GUIID)
-				return new GuiPotions.GuiWindow(world, x, y, z, player);
+			if (id == GuiPuiseurDeMagieGui.GUIID)
+				return new GuiPuiseurDeMagieGui.GuiWindow(world, x, y, z, player);
 			return null;
 		}
 	}

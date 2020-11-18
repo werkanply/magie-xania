@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "normal": {
+      "model": "vrai_xania:extracteur_de_magie"
+    },
+    "facing=north": {
+      "model": "vrai_xania:extracteur_de_magie"
+    },
+    "facing=east": {
+      "model": "vrai_xania:extracteur_de_magie",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "vrai_xania:extracteur_de_magie",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "vrai_xania:extracteur_de_magie",
+      "y": 270
+    }
+  }
+}

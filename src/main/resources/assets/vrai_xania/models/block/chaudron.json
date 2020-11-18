@@ -1,0 +1,8 @@
+{
+  "parent": "vrai_xania:custom/chaudron",
+  "textures": {
+    "all": "vrai_xania:blocks/texturefinalchaudron",
+    "particle": "vrai_xania:blocks/texturefinalchaudron",
+    "2": "vrai_xania:blocks/texturefinalchaudron"
+  }
+}

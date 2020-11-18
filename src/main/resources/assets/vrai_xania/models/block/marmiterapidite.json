@@ -1,0 +1,8 @@
+{
+  "parent": "vrai_xania:custom/marmiterapidite",
+  "textures": {
+    "all": "vrai_xania:blocks/marmiterapidite",
+    "particle": "vrai_xania:blocks/marmiterapidite",
+    "4": "vrai_xania:blocks/marmiterapidite"
+  }
+}

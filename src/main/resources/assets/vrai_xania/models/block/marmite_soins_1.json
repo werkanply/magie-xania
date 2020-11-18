@@ -1,0 +1,8 @@
+{
+  "parent": "vrai_xania:custom/marmitesoins1",
+  "textures": {
+    "all": "vrai_xania:blocks/marmitesoins1",
+    "particle": "vrai_xania:blocks/marmitesoins1",
+    "3": "vrai_xania:blocks/marmitesoins1"
+  }
+}

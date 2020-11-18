@@ -1,0 +1,41 @@
+{
+  "_fv": 10,
+  "_type": "gui",
+  "definition": {
+    "type": 1,
+    "width": 400,
+    "height": 351,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "button",
+        "data": {
+          "text": "demarer",
+          "onClick": {
+            "name": "Extracteurdemagiegui"
+          },
+          "width": 100,
+          "height": 40,
+          "name": "demarer",
+          "x": 366,
+          "y": 171
+        }
+      },
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": "CUSTOM:Imperiumfleur"
+          },
+          "id": 0,
+          "disableStackInteraction": false,
+          "dropItemsWhenNotBound": true,
+          "name": "Slot #0",
+          "x": 394,
+          "y": 116
+        }
+      }
+    ]
+  }
+}

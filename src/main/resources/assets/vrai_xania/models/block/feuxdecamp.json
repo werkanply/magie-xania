@@ -1,0 +1,8 @@
+{
+  "parent": "vrai_xania:custom/feuxdecampvrai",
+  "textures": {
+    "all": "vrai_xania:blocks/feuxdecampvrai",
+    "particle": "vrai_xania:blocks/feuxdecampvrai",
+    "2": "vrai_xania:blocks/feuxdecampvrai"
+  }
+}

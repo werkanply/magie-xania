@@ -1,0 +1,8 @@
+{
+  "parent": "vrai_xania:custom/marmiteresistanceaufeux",
+  "textures": {
+    "all": "vrai_xania:blocks/marmiteresistanceaufeux1",
+    "particle": "vrai_xania:blocks/marmiteresistanceaufeux1",
+    "5": "vrai_xania:blocks/marmiteresistanceaufeux"
+  }
+}
